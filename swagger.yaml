@@ -37140,3 +37140,44 @@ components:
       description: Client_Id header
       name: Client_Id
       in: header
+  /users/severaUserId}/status:
+  put:
+    summary: Update user active status
+    description: Updates the isActive attribute of a user in Keycloak. This attribute determines whether the user is active in the system.
+    operationId: updateUserStatus
+    tags:
+      - Users
+    parameters:
+      - name: SeveraUserId
+        in: path
+        required: true
+        description: User ID from severa system
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - isActive
+            properties:
+              isActive:
+                type: boolean
+                description: Whether the user is active
+    responses:
+      "200":
+        description: User status updated successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: User status updated
+      "400":
+        description: Invalid request
+      "500":
+        description: Internal server error
