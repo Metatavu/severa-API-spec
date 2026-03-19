@@ -37141,19 +37141,20 @@ components:
       name: Client_Id
       in: header
   /users/{userId}/status:
-    put:
-      tags:
+  put:
+    summary: Update user active status
+    description: Updates the isActive attribute of a user in Keycloak. This attribute determines whether the user is active in the system.
+    operationId: updateUserStatus
+    tags:
       - Users
-      summary: Update user active status
-      description: updates a custom "status" attribute for the user in keycloak(eg. active,inactive)
-      operationId: updateUserStatus
-      parameters:
+    parameters:
       - name: userId
         in: path
         required: true
+        description: Keycloak user ID
         schema:
           type: string
-        requestBody:
+    requestBody:
       required: true
       content:
         application/json:
@@ -37164,10 +37165,19 @@ components:
             properties:
               isActive:
                 type: boolean
-        responses:
-      200:
-        description: User status updated
-      400:
+                description: Whether the user is active
+    responses:
+      "200":
+        description: User status updated successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: User status updated
+      "400":
         description: Invalid request
-      500:
-        description: Internal error
+      "500":
+        description: Internal server error
