@@ -37145,6 +37145,7 @@ components:
       tags:
       - Users
       summary: Update user active status
+      description: updates a custom "status" attribute for the user in keycloak(eg. active,inactive)
       operationId: updateUserStatus
       parameters:
       - name: userId
