@@ -37140,3 +37140,33 @@ components:
       description: Client_Id header
       name: Client_Id
       in: header
+  /users/{userId}/status:
+    put:
+      tags:
+      - Users
+      summary: Update user active status
+      operationId: updateUserStatus
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+        requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - isActive
+            properties:
+              isActive:
+                type: boolean
+        responses:
+      200:
+        description: User status updated
+      400:
+        description: Invalid request
+      500:
+        description: Internal error
