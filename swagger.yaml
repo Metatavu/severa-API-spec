@@ -37140,7 +37140,7 @@ components:
       description: Client_Id header
       name: Client_Id
       in: header
-  /users/{userId}/status:
+  /users/severaUserId}/status:
   put:
     summary: Update user active status
     description: Updates the isActive attribute of a user in Keycloak. This attribute determines whether the user is active in the system.
@@ -37148,10 +37148,10 @@ components:
     tags:
       - Users
     parameters:
-      - name: userId
+      - name: SeveraUserId
         in: path
         required: true
-        description: Keycloak user ID
+        description: User ID from severa system
         schema:
           type: string
     requestBody:
